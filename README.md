@@ -1,4 +1,5 @@
 <img src="https://img.shields.io/github/v/tag/maddogsstyle/otus-project?label=version" />
+
 # Описание проекта
 Данный проект является итоговой квалификационной работой по завершении курса "DevOps практики и инструменты"
 Составными частями проекта являются:
