@@ -48,7 +48,12 @@ kubectl get ingress
 ```
 и подставить его в `./project/values.yaml`
 
-4. Затем необходимо выполнить команду `kubectl get ingress` снова и перейти по адресу HOSTS, принадлежащему RabbitMQ.
+4. Затем необходимо выполнить команду 
+```
+kubectl get ingress
+``` 
+
+снова и перейти по адресу HOSTS, принадлежащему RabbitMQ.
 5. Войти в консоль управления RabbitMQ, используя имя пользователя `user` и пароль, являющийся выводом команды
 ```
 kubectl get secret --namespace default project-rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 -d
@@ -62,7 +67,9 @@ helm install mongodb ./mongodb
 ```
 kubectl get svc
 ```
-и подставить полученные значения в файл ./crawler/templates/deployment.yaml
+и подставить полученные значения в файл `./crawler/templates/deployment.yaml`
+
+
 9. Наконец, можно выполнить команду
 ```
 helm install crawler ./crawler
