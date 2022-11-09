@@ -76,7 +76,7 @@ helm install crawler ./crawler
 helm install ui ./ui
 kubectl get svc
 ```
-перейти по EXTERNAL IP для приложения ui и пользоваться развернутым приложением.
+перейти по EXTERNAL IP для приложения `ui` и пользоваться развернутым сервисом.
 # Первый старт
 
 PRESS X TO WIN
