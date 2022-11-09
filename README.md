@@ -1,6 +1,4 @@
 <img src="https://img.shields.io/github/v/tag/maddogsstyle/otus-project?label=version" />
-# otus-project
-
 # Описание проекта
 Данный проект является итоговой квалификационной работой по завершении курса "DevOps практики и инструменты"
 Составными частями проекта являются:
@@ -26,18 +24,49 @@
 В качестве результата работы сервис возвращает URL страниц наряду с количеством запрашивамых вхождений.
 
 # Необходимые компоненты
-Для работы приложения необходимы:
+Для работы приложения необходимы следующие утилиты:
 
-- Что-то
-- Что-то еще
+- yc
+- Helm
 
 # Порядок установки
+(Этого раздела не будет, если удастся оформить "PRESS X TO WIN")
 
-Кластер разворачевается автоматически средствам `yc`:
+1. Кластер разворачивается автоматически средствам `yc`:
 ```
 ./cluster.sh
 ```
-
+2. После успешного разворачивания кластера необходимо установить project chart:
+```
+cd kubernetes/Charts
+helm install project ./project
+```
+3. После этого необходимо узнать ADDRESS приложения RabbitMQ
+```
+kubectl get ingress
+```
+и подставить его в ./project/values.yaml
+4. Затем необходимо выполнить команду `kubectl get ingress` снова и перейти по адресу HOSTS, принадлежащему RabbitMQ.
+5. Войти в консоль управления RabbitMQ, используя имя пользователя `user` и пароль, являющийся выводом команды
+```
+kubectl get secret --namespace default project-rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 -d
+```
+6. Перейти во вкладу `Queues` и добавить новую очередь `mqqueue` с типом `Durability: Transient`
+7. Выполнить команду 
+```helm install mongodb ./mongodb
+```
+8.  Выполнить команду
+```
+kubectl get svc
+```
+и подставить полученные значения в файл ./crawler/templates/deployment.yaml
+9. Наконец, можно выполнить команду
+```
+helm install crawler ./crawler
+helm install ui ./ui
+kubectl get svc
+```
+перейти по EXTERNAL IP для приложения ui и пользоваться развернутым приложением.
 # Первый старт
 
-(Этого раздела не будет, если удастся оформить "PRESS X TO WIN")
+PRESS X TO WIN
