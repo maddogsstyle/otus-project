@@ -1,4 +1,5 @@
-<img src="https://img.shields.io/github/v/tag/maddogsstyle/otus-project?label=version" />
+<p align="right">
+<img src="https://img.shields.io/github/v/tag/maddogsstyle/otus-project?label=version" /></p>
 # otus-project
 
 # Описание проекта
