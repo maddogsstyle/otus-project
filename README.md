@@ -46,8 +46,7 @@ helm install project ./project
 ```
 kubectl get ingress
 ```
-и подставить его в ``./project/values.yaml`
-
+и подставить его в `./project/values.yaml`
 4. Затем необходимо выполнить команду `kubectl get ingress` снова и перейти по адресу HOSTS, принадлежащему RabbitMQ.
 5. Войти в консоль управления RabbitMQ, используя имя пользователя `user` и пароль, являющийся выводом команды
 ```
@@ -55,7 +54,8 @@ kubectl get secret --namespace default project-rabbitmq -o jsonpath="{.data.rabb
 ```
 6. Перейти во вкладу `Queues` и добавить новую очередь `mqqueue` с типом `Durability: Transient`
 7. Выполнить команду 
-```helm install mongodb ./mongodb
+```
+helm install mongodb ./mongodb
 ```
 8.  Выполнить команду
 ```
