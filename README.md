@@ -47,6 +47,7 @@ helm install project ./project
 kubectl get ingress
 ```
 и подставить его в `./project/values.yaml`
+
 4. Затем необходимо выполнить команду `kubectl get ingress` снова и перейти по адресу HOSTS, принадлежащему RabbitMQ.
 5. Войти в консоль управления RabbitMQ, используя имя пользователя `user` и пароль, являющийся выводом команды
 ```
