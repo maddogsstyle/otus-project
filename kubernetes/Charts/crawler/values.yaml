@@ -1,0 +1,8 @@
+---
+image:
+  repository: achuprin/crawler
+  tag: latest
+
+service:
+  internalPort: 8000
+  externalPort: 8000

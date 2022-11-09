@@ -1,0 +1,16 @@
+---
+image:
+  repository: achuprin/crawler-ui
+  tag: latest
+
+deployment:
+  mongohost: 10.2.207.96 #internal ip монги
+  mongoport: 27017
+  flaskapp: ui.py
+
+service:
+  internalPort: 8000
+  externalPort: 80
+
+ingress:
+  class: nginx

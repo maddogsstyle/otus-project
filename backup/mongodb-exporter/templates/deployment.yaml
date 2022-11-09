@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "mongodb-exporter.fullname" . }}
+  labels:
+    app: crawler
+    component: mongodb-exporter
+    release: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crawler
+      component: mongodb-exporter
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      name: mongodb-exporter
+      labels:
+        app: crawler
+        component: mongodb-exporter
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - image: bitnami/mongodb-exporter
+        name: mongodb-exporter
+        env:
+        - name: MONGODB_URL
+          value: mongodb

@@ -1,0 +1,49 @@
+crawler:
+  image:
+   repository: achuprin/crawler
+   tag: latest
+
+  service:
+    internalPort: 8000
+    externalPort: 8000
+
+ui:
+  image:
+    repository: achuprin/ui
+    tag: latest
+
+  deployment:
+    mongohost: mongodb.default.svc.cluster.local
+    mongoport: 27017
+    flaskapp: ui.py
+
+  service:
+    internalPort: 8000
+    externalPort: 8000
+
+  ingress:
+   class: nginx
+
+mongodb:
+  auth:
+    enabled: false
+
+prometheus-mongodb-exporter:
+   env:
+    normal:
+      MONGODB_URL: mongodb.default.svc.cluster.local
+
+rabbitmq:
+  ingress: 
+    enabled: true
+    ingressClassName: nginx
+    hostname: 51.250.65.119.nip.io  
+
+prometheus-rabbitmq-exporter:
+   env:
+    secret:
+      RABBIT_USER: user
+      RABBIT_PASSWORD: password
+    normal:
+      RABBIT_URL: 51.250.79.39.nip.io
+      INCLUDE_QUEUES: mqqueue
