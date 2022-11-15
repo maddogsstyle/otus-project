@@ -13,8 +13,8 @@
 	- Менеджер CI/CD: Gitlab CI (в планах)
 
 3. Инструменты, осуществляющие логирование и мониторинг:
-	- Что-то для логов
-	- Что-то для мониторинга
+	- Prometheus (v2.39.1)
+	- Grafana (v9.2.4)
 
 4. Непосредственно приложение, состоящее из двух компонентов:
 	- UI
@@ -54,6 +54,7 @@ kubectl get ingress
 ``` 
 
 снова и перейти по адресу HOSTS, принадлежащему RabbitMQ.
+
 5. Войти в консоль управления RabbitMQ, используя имя пользователя `user` и пароль, являющийся выводом команды
 ```
 kubectl get secret --namespace default project-rabbitmq -o jsonpath="{.data.rabbitmq-password}" | base64 -d
@@ -80,3 +81,29 @@ kubectl get svc
 # Первый старт
 
 PRESS X TO WIN
+
+# Мониторинг и логирование
+
+## Prometheus
+
+Для входа в UI необходимо выполнить команду:
+
+```
+kubectl port-forward svc/pro-kube-prometheus-stack-prometheus 9090
+```
+
+Prometheus будет доступен по адресу:
+
+`http://localhost:9090/`
+
+## Grafana
+
+Для входа в UI необходимо выполнить команду:
+
+```
+kubectl port-forward svc/pro-grafana 8880
+```
+
+Grafana будет доступна по адресу:
+
+`http://localhost:9090/`
