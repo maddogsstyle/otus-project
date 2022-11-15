@@ -106,4 +106,4 @@ kubectl port-forward svc/pro-grafana 8880
 
 Grafana будет доступна по адресу:
 
-`http://localhost:9090/`
+`http://localhost:8880/`
