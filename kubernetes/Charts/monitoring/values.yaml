@@ -1,0 +1,14 @@
+kube-prometheus-stack:
+  grafana:
+    service:
+      port: 8880
+
+  prometheus:
+    prometheusSpec:
+       additionalScrapeConfigs:
+        - job_name: 'crawler'
+          static_configs:
+          - targets: ['10.2.139.85:8000'] #ClusterIP backend'a
+        - job_name: 'ui'
+          static_configs:
+          - targets: ['10.2.142.43'] #ExternalIP ui
