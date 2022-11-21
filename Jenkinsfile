@@ -31,7 +31,7 @@ def helmInstall (namespace, release) {
         sh """
             helm upgrade --install --namespace ${namespace} ${release} \
                 --set imagePullSecrets=${IMG_PULL_SECRET} \
-                --set image.repository=${DOCKER_REG}/${IMAGE_NAME},image.tag=${DOCKER_TAG} helm/acme
+                --set image.repository=${DOCKER_REG}/${IMAGE_NAME},image.tag=${DOCKER_TAG} achuprin/backend
         """
         sh "sleep 5"
     }
@@ -109,14 +109,14 @@ pipeline {
 
     // Some global default variables
     environment {
-        IMAGE_NAME = 'acme'
+        IMAGE_NAME = 'crawler'
         TEST_LOCAL_PORT = 8817
         DEPLOY_PROD = false
         PARAMETERS_FILE = "${JENKINS_HOME}/parameters.groovy"
     }
 
     parameters {
-        string (name: 'GIT_BRANCH',           defaultValue: 'master',  description: 'Git branch to build')
+        string (name: 'GIT_BRANCH',           defaultValue: 'main',  description: 'Git branch to build')
         booleanParam (name: 'DEPLOY_TO_PROD', defaultValue: false,     description: 'If build and tests are good, proceed and deploy to production without manual approval')
 
 
@@ -135,8 +135,8 @@ pipeline {
 */
     }
 
-    // In this example, all is built and run from the master
-    agent { node { label 'master' } }
+    // In this example, all is built and run from the main
+    agent { node { label 'main' } }
 
     // Pipeline stages
     stages {
@@ -144,10 +144,10 @@ pipeline {
         ////////// Step 1 //////////
         stage('Git clone and setup') {
             steps {
-                echo "Check out acme code"
-                git branch: "master",
-                        credentialsId: 'eldada-bb',
-                        url: 'https://github.com/eldada/jenkins-pipeline-kubernetes.git'
+                echo "Check out code"
+                git branch: "main",
+                        credentialsId: 'maddogsstyle',
+                        url: 'https://github.com/maddogsstyle/otus-project.git'
 
                 // Validate kubectl
                 sh "kubectl cluster-info"
@@ -282,61 +282,14 @@ pipeline {
             }
         }
 
-        ////////// Step 5 //////////
-        stage('Deploy to staging') {
-            steps {
-                script {
-                    namespace = 'staging'
-
-                    echo "Deploying application ${IMAGE_NAME}:${DOCKER_TAG} to ${namespace} namespace"
-                    createNamespace (namespace)
-
-                    // Remove release if exists
-                    helmDelete (namespace, "${ID}")
-
-                    // Deploy with helm
-                    echo "Deploying"
-                    helmInstall (namespace, "${ID}")
-                }
-            }
-        }
-
-        // Run the 3 tests on the deployed Kubernetes pod and service
-        stage('Staging tests') {
-            parallel {
-                stage('Curl http_code') {
-                    steps {
-                        curlTest (namespace, 'http_code')
-                    }
-                }
-                stage('Curl total_time') {
-                    steps {
-                        curlTest (namespace, 'time_total')
-                    }
-                }
-                stage('Curl size_download') {
-                    steps {
-                        curlTest (namespace, 'size_download')
-                    }
-                }
-            }
-        }
-
-        stage('Cleanup staging') {
-            steps {
-                script {
-                    // Remove release if exists
-                    helmDelete (namespace, "${ID}")
-                }
-            }
-        }
+        
 
         ////////// Step 6 //////////
         // Waif for user manual approval, or proceed automatically if DEPLOY_TO_PROD is true
         stage('Go for Production?') {
             when {
                 allOf {
-                    environment name: 'GIT_BRANCH', value: 'master'
+                    environment name: 'GIT_BRANCH', value: 'main'
                     environment name: 'DEPLOY_TO_PROD', value: 'false'
                 }
             }
