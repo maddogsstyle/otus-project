@@ -271,7 +271,7 @@ pipeline {
                     }
                 }
             }
-        }
+        } 
 
         stage('Cleanup dev') {
             steps {
