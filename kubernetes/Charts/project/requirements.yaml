@@ -1,10 +1,26 @@
 ---
 dependencies:
 
-  - name: ingress-nginx
-    version: "4.3.0"
-    repository: https://kubernetes.github.io/ingress-nginx
+  # - name: ingress-nginx
+  #   version: "4.3.0"
+  #   repository: https://kubernetes.github.io/ingress-nginx
 
   - name: rabbitmq
     version: "11.1.1"
     repository: https://charts.bitnami.com/bitnami
+
+  - name: mongodb
+    version: "1.0.0"
+    repository: "file://../mongodb"
+
+  - name: backend
+    version: "1.0.0"
+    repository: "file://../backend"
+
+  - name: ui
+    version: "1.0.0"
+    repository: "file://../ui"
+
+  # - name: kube-prometheus-stack
+  #   version: "41.7.4"
+  #   repository: https://prometheus-community.github.io/helm-charts

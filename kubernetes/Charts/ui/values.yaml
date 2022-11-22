@@ -4,7 +4,7 @@ image:
   tag: latest
 
 deployment:
-  mongohost: 10.2.207.96 #internal ip монги
+  mongohost: mongodb.default.svc.cluster.local #internal ip монги
   mongoport: 27017
   flaskapp: ui.py
 

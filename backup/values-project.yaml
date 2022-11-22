@@ -1,0 +1,10 @@
+mongodb:
+  auth:
+    enabled: false
+
+rabbitmq:
+  ingress: 
+    enabled: true
+    ingressClassName: nginx
+    hostname: 51.250.0.179.nip.io #подставить ADDRESS сюда
+  

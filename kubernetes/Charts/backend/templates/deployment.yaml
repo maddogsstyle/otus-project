@@ -10,7 +10,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels:
+    matchLabels: 
       app: crawler
       component: backend
       release: {{ .Release.Name }}
@@ -27,11 +27,11 @@ spec:
         name: backend
         env:
         - name: MONGO
-          value: 10.2.207.96 #internal ip монги
+          value: mongodb.default.svc.cluster.local #internal ip монги
         - name: MONGO_PORT
           value: "27017"
         - name: RMQ_HOST
-          value: 10.2.184.208 #internal ip сервиса RMQ
+          value: project-rabbitmq.default.svc.cluster.local #internal ip сервиса RMQ
         - name: RMQ_QUEUE
           value: mqqueue
         - name: RMQ_USERNAME

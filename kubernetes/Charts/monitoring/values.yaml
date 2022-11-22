@@ -8,7 +8,7 @@ kube-prometheus-stack:
        additionalScrapeConfigs:
         - job_name: 'crawler'
           static_configs:
-          - targets: ['10.2.139.85:8000'] #ClusterIP backend'a
+          - targets: ['project-crawler.svc.cluster.local:8000'] #ClusterIP backend'a
         - job_name: 'ui'
           static_configs:
-          - targets: ['10.2.142.43'] #ExternalIP ui
+          - targets: ['project-ui.dev.svc.cluster.local'] #ExternalIP ui

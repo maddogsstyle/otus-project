@@ -3,8 +3,21 @@ mongodb:
     enabled: false
 
 rabbitmq:
-  ingress: 
-    enabled: true
-    ingressClassName: nginx
-    hostname: 51.250.0.179.nip.io #подставить ADDRESS сюда
-  
+  auth:
+    username: user
+    password: pass
+    
+kube-prometheus-stack:
+  grafana:
+    service:
+      port: 8880
+
+  prometheus:
+    prometheusSpec:
+       additionalScrapeConfigs:
+        - job_name: 'crawler'
+          static_configs:
+          - targets: ['project-crawler.svc.cluster.local:8000'] #ClusterIP backend'a
+        - job_name: 'ui'
+          static_configs:
+          - targets: ['project-ui.dev.svc.cluster.local'] #ExternalIP ui
