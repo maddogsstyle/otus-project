@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    environment {
+        tools {
+            
+  'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
+}
+    }
+
     stages {
         
         stage('Delete workspace before build starts') {
