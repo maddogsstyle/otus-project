@@ -9,13 +9,7 @@ pipeline {
                 deleteDir()
             }
         }
-        stage('Checkout') {
-            steps{
-                git branch: 'main',
-                    url: 'https://github.com/maddogsstyle/otus-project'        
-                }
-        }
-    
+
         stage('Build docker image [crawler]') {
             steps{
                 dir('src/crawler') {
