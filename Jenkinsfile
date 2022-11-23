@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        python { image 'docker:latest' }
+        docker { image 'python:3.6-alpine' }
     }
 
     stages {
