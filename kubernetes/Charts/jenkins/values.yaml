@@ -3,3 +3,12 @@ jenkins:
     image: "achuprin/jenkins"
     tag: "latest"
     adminPassword: pass
+    initContainerEnv:
+  #   - name: http_proxy
+  #     value: "http://192.168.64.1:3128"
+  # containerEnv:
+  #   - name: http_proxy
+  #     value: "http://192.168.64.1:3128"
+  agent:
+    image: "achuprin/agent"
+    tag: "latest"
