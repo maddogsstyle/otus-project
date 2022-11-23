@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            defaultContainer 'jnlp'
+            yamlFile 'agentpod.yaml'
+        }
+    }
 
     stages {
         
@@ -13,25 +18,28 @@ pipeline {
 
         stage('Build docker image [crawler]') {
             steps{
-                dir('src/crawler') {
-                    sh '/usr/bin/docker build -t achuprin/crawler:latest .'
+                container('docker')
+                    dir('src/crawler') {
+                        sh 'docker build -t achuprin/crawler:latest .'
+                    }
                 }
             }
-        }
 
         stage('Push docker image to DockerHub') {
             steps{
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh '''
-                        /usr/bin/docker push achuprin/jenkins-images:latest
-                    '''
+                container('docker')
+                    withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                        sh '''
+                            docker push achuprin/jenkins-images:latest
+                        '''
+                    }
+                }
+            }
+        stage('Delete docker image locally') {
+            steps{
+                container('docker')
+                    sh 'docker rmi achuprin/jenkins-images:latest'
                 }
             }
         }
-        stage('Delete docker image locally') {
-            steps{
-                sh '/usr/bin/docker rmi achuprin/jenkins-images:latest'
-            }
-        }
-    }
 }

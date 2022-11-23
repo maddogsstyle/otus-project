@@ -1,0 +1,4 @@
+jenkins:
+  controller:
+    image: "achuprin/jenkins"
+    tag: "latest"

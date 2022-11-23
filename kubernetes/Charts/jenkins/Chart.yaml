@@ -1,0 +1,7 @@
+name: jenkins
+version: 1.0.0
+description: my custom jenkins
+maintainers:
+- name: Alexey Chuprin
+email: maddogsstyle@gmail.com
+appVersion: 1.0
