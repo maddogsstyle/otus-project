@@ -11,6 +11,13 @@ pipeline {
             }
         }
 
+        stage('Checkout') {
+            steps{
+                git branch: 'main',
+                    url: 'https://github.com/maddogsstyle/otus-project.git'        
+                }
+        }
+
         stage('ls') {
             steps{
                         sh 'ls -la'
