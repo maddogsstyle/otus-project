@@ -1,9 +1,6 @@
 pipeline {
     agent {
-        kubernetes {
-            defaultContainer 'jnlp'
-            yamlFile 'agentpod.yaml'
-        }
+        python { image 'python:3.6-alpine' }
     }
 
     stages {
@@ -16,9 +13,8 @@ pipeline {
             }
         }
 
-        stage('Build docker image [crawler]') {
+        stage('Build docker image crawler') {
             steps{
-                container('docker')
                     dir('src/crawler') {
                         sh 'docker build -t achuprin/crawler:latest .'
                     }
@@ -27,7 +23,6 @@ pipeline {
 
         stage('Push docker image to DockerHub') {
             steps{
-                container('docker')
                     withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
                         sh '''
                             docker push achuprin/jenkins-images:latest
