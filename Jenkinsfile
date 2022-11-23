@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     stages {
         
 
@@ -10,6 +10,12 @@ pipeline {
                 deleteDir()
             }
         }
+
+        stage('ls') {
+            steps{
+                        sh 'ls -la'
+                }
+            }
 
         stage('Build docker image crawler') {
             steps{
