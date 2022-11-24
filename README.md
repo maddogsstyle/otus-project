@@ -45,7 +45,7 @@ helm install project ./project
 ```
 
 3. Войти в консоль управления RabbitMQ, используя имя пользователя `user` и пароль `pass`
-```
+
 4. Перейти во вкладу `Queues` и добавить новую очередь `mqqueue` с типом `Durability: Transient`
 
 5. Наконец, можно выполнить команду
