@@ -38,6 +38,7 @@
 ./cluster.sh
 ```
 2. После успешного разворачивания кластера необходимо установить project chart:
+
 ```
 cd kubernetes/Charts
 helm install project ./project
@@ -48,11 +49,13 @@ helm install project ./project
 4. Перейти во вкладу `Queues` и добавить новую очередь `mqqueue` с типом `Durability: Transient`
 
 5. Наконец, можно выполнить команду
+
 ```
 helm install crawler ./crawler
 helm install ui ./ui
 kubectl get svc
 ```
+
 перейти по EXTERNAL IP для приложения `ui` и пользоваться развернутым сервисом.
 
 6. CI/CD пайплайн реализован средствами Jenkins. 
