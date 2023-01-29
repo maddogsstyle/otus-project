@@ -1,7 +1,7 @@
 name: mongodb
-version: 1.0.0
-description: OTUS project - mongodb
+version: 4.0.0
+description: MongoDB v4.0 - easy and fast installing database unit. "Better done yourself" chart :)
 maintainers:
-- name: achuprin
+- name: Alexey Chuprin
 email: maddogsstyle@gmail.com
-appVersion: 1.0
+appVersion: 4.0

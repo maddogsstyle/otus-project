@@ -1,4 +1,0 @@
----
-service:
-  internalPort: 9216
-  externalPort: 9216

@@ -35,9 +35,9 @@ spec:
         - name: RMQ_QUEUE
           value: mqqueue
         - name: RMQ_USERNAME
-          value: user
+          value: guest
         - name: RMQ_PASSWORD
-          value: pass
+          value: guest
         - name: CHECK_INTERVAL
           value: "60"
         - name: EXCLUDE_URLS

@@ -3,15 +3,17 @@ mongodb:
     enabled: false
 
 rabbitmq:
-  auth:
-    username: user
-    password: pass
-    
+  authentication:
+    erlangCookie: "/var/lib/rabbitmq/.erlang.cookie"
+  customConfig: management.load_definitions = /rabbitmq-secret/definition.json #Подбрасываем настройки для очереди по умолчанию...
+  extraSecrets: #...через заранее созданный секрет
+    - name: rabbitmq-secret
+      mountPath: /rabbitmq-secret
+
 kube-prometheus-stack:
   grafana:
     service:
       port: 8880
-
   prometheus:
     prometheusSpec:
        additionalScrapeConfigs:

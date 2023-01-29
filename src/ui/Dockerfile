@@ -1,4 +1,4 @@
-FROM python:3.6-alpine
+FROM arm64v8/python:2
 
 WORKDIR /opt/app/
 COPY requirements.txt requirements-test.txt ./

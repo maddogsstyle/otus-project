@@ -1,6 +1,6 @@
 name: otus-project
 version: 1.0.0
-description: OTUS project
+description: This is a project to demonstrate the deployment of a microservice app
 maintainers:
 - name: Alexey Chuprin
 email: maddogsstyle@gmail.com

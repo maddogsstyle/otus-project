@@ -1,6 +1,6 @@
-name: otus-grafana
+name: kps
 version: 1.0.0
-description: grafana
+description: A custom chart deploying a Prometheus + Grafana stack capable of monitoring your apps
 maintainers:
 - name: Alexey Chuprin
 email: maddogsstyle@gmail.com

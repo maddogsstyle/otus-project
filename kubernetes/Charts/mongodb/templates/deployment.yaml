@@ -17,5 +17,5 @@ spec:
         component: mongodb
     spec:
       containers:
-      - image: mongo:3.2
+      - image: mongo:4
         name: mongodb

@@ -1,6 +1,6 @@
 ---
 image:
-  repository: achuprin/crawler-ui
+  repository: achuprin/uiarm
   tag: latest
 
 deployment:

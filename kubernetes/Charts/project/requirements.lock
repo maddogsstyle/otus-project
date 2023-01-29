@@ -1,15 +1,18 @@
 dependencies:
 - name: rabbitmq
-  repository: https://charts.bitnami.com/bitnami
-  version: 11.1.1
+  repository: https://groundhog2k.github.io/helm-charts/
+  version: 0.6.7
+- name: rabbitmq-secret
+  repository: file://../rabbitmq-secret
+  version: 0.6.7
 - name: mongodb
   repository: file://../mongodb
+  version: 4.0.0
+- name: ui
+  repository: file://../ui
   version: 1.0.0
 - name: backend
   repository: file://../backend
   version: 1.0.0
-- name: ui
-  repository: file://../ui
-  version: 1.0.0
-digest: sha256:bfab7971f1a6f0d7c773138d2ab2305368bd31ec23e344150ff931c944bd5ba6
-generated: "2022-11-22T00:06:23.650224954+03:00"
+digest: sha256:28319fa02db8a7f31dd5d45f1dc23dc6c98b3015b3634bb07d5d78046ac84121
+generated: "2023-01-29T19:10:18.687961+03:00"

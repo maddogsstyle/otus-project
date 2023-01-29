@@ -1,0 +1,4 @@
+rabbitmq: 
+kubectl port-forward --namespace default svc/project-rabbitmq 15672:15672
+ui:
+kubectl port-forward --namespace default svc/project-ui 8000:80 

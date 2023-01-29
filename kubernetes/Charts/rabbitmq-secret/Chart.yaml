@@ -1,0 +1,7 @@
+name: rabbitmq-secret
+version: 0.6.7
+description: A Secret unit made for RabbitMQ. It contains a definition file to deploy a default queue.
+maintainers:
+- name: Alexey Chuprin
+email: maddogsstyle@gmail.com
+appVersion: 1.0

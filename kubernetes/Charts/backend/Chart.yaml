@@ -1,7 +1,7 @@
 name: backend
 version: 1.0.0
-description: OTUS project - crawler
+description: This is a simple backend unit for the Crawler App. It ablosutely requires RabbitMQ and MongoDB to work.
 maintainers:
-- name: achuprin
+- name: Alexey Chuprin
 email: maddogsstyle@gmail.com
 appVersion: 1.0
