@@ -51,11 +51,6 @@ cd kubernetes/Charts
 helm install project ./project
 ```
 3. Наконец, можно выполнить команду
-
-```
-helm install crawler ./crawler
-helm install ui ./ui
-```
 - (для Яндекс.Облака) 
 ```
 kubectl get svc
