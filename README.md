@@ -75,7 +75,7 @@ PRESS X TO WIN
 Для входа в UI необходимо выполнить команду:
 
 ```
-kubectl port-forward svc/pro-kube-prometheus-stack-prometheus 9090
+kubectl port-forward svc/project-kube-prometheus-stack-prometheus 9090
 ```
 
 Prometheus будет доступен по адресу:
@@ -87,9 +87,11 @@ Prometheus будет доступен по адресу:
 Для входа в UI необходимо выполнить команду:
 
 ```
-kubectl port-forward svc/pro-grafana 8880
+kubectl port-forward svc/project-grafana 8880
 ```
 
 Grafana будет доступна по адресу:
 
 `http://localhost:8880/`
+
+logpass: admin/prom-operator
